@@ -1,0 +1,46 @@
+/*2.Recursive GCD and Iterative GCD programs using Euclid's method  (Single program, menu driven) */
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<stdlib.h>
+
+int gcd_itr(int a, int b)
+{
+int temp;
+while (b > 0)
+{
+temp=a%b;
+a = b;
+b = temp;
+}
+return a;
+}
+// Recursive function to calculate gcd of two numbers
+int gcd_rec(int a, int b)
+{
+if (b == 0)
+return a;
+int temp=a%b;
+return gcd_rec(b, temp);
+}
+void main()
+{
+int a,b,ch;
+for(;;)
+{
+printf("Enter two non-zero numbers\n");
+scanf("%d %d",&a,&b);
+printf("1.Iterative gcd\n2.Recursive gcd\n3.exit\n");
+printf("Enter your choice\n");
+scanf("%d",&ch);
+switch(ch)
+{
+    case 1:printf("Gcd of two numbers by iterative function is %d\n",gcd_itr(a,b));
+            break;
+    case 2:printf("Gcd of two numbers by recursive function is %d\n",gcd_rec(a,b));
+            break;
+    default:exit(0);
+}
+}
+}
+	
