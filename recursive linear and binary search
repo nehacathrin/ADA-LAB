@@ -1,0 +1,106 @@
+/*1.Recursive Linear and Binary search (Single program, menu driven*/
+
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<stdlib.h>
+int arr1[100],arr2[100],n1,n2;
+
+	int linear(int i,int item)
+	{
+		if(i<n1)
+		{
+			if(arr1[i]==item)
+				return(i+1);
+			else
+				linear(++i,item);
+		}
+		else
+			return -1;
+	}
+			
+			
+	
+
+int binary(int l,int u,int mid,int item)
+{
+	
+	if(l<=u)
+	{
+		if(arr2[mid]==item)
+		{
+			return mid+1;
+		}
+		else if(arr2[mid]<item)
+			l=mid+1;
+		else
+			u=mid-1;
+		
+		mid=(l+u)/2;
+		
+		binary(l,u,mid,item);
+	}
+	else
+		return -1;
+}
+	
+void main()
+{
+	
+	printf("enter size of linear_search array \n");
+	scanf("%d",&n1);
+	printf("enter  values into linear_search array  \n ");
+	for(int i=0;i<n1;i++)
+		scanf("%d",&arr1[i]);
+	
+	printf("enter size of binary_search array \n");
+	scanf("%d",&n2);
+	printf("enter values in ascending order for binary_search array \n");
+	for(int i=0;i<n2;i++)
+		scanf("%d",&arr2[i]);
+	
+	for(int i=0;i<n2-1;i++)
+	{
+		if(arr2[i]>arr2[i+1])
+		{
+			printf("array not in ascending order\n");
+			exit(0);
+		}
+	}
+	
+	
+	int ch,item,flag,l,u,mid;
+	for(;;)
+	{
+		printf("1.linear search \n 2.binary seach \n else exit \n");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:printf("enter value to be seached \n");
+	         scanf("%d",&item);
+			flag=linear(0,item);
+			if(flag>=0)
+				printf("value found at position %d\n",flag);
+			else
+				printf("value not found\n");
+			break;
+			case 2: l=0;
+			u=n2-1;
+			mid=(l+u)/2;
+			printf("enter value to be seached \n");
+	         scanf("%d",&item);
+			flag=binary(l,u,mid,item);
+			if(flag>=0)
+				printf("value found at position %d\n",flag);
+			else
+				printf("value not found\n");
+			break;
+			default:exit(0);
+		}
+	}
+}
+
+	
+	
+
+	
