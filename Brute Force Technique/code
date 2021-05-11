@@ -1,0 +1,38 @@
+/*3) Program to check whether a given pattern string is present or not 
+in the given text string using Brute Force pattern matching technique (Practice Program).*/
+
+#include<stdio.h>
+#include<string.h>
+
+int pattern_matching(char text[],char pattern[])
+{
+	int j,n,m;
+	n=strlen(text);
+	m=strlen(pattern);
+	
+	for(int i=0;i<=n-m;i++)
+	{
+		 j=0;
+		 while(j<m && text[i+j]==pattern[j])
+			 j++;
+		
+		if(j==m)
+			return i;
+	}
+	return -1;
+}
+
+void main()
+{
+	char text[20],pattern[20];
+	printf("enter text string \n");
+	gets(text);
+	printf("enter pattern string \n");
+	gets(pattern);
+	
+	int flag=pattern_matching(text,pattern);
+	if(flag==-1)
+		printf("pattern not present in given text \n");
+	else
+		printf("pattern is present in given text at position %d \n",flag);
+}
