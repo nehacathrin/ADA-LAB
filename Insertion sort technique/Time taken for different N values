@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<stdlib.h>
+#include<time.h>
+void insertion_sort(int n,int a[])
+{
+	int y,j;
+	for(int i=1;i<n;i++)
+	{
+		y=a[i];
+		j=i-1;
+		while(j>=0&&a[j]>y)
+		{
+			a[j+1]=a[j];
+			j--;
+		}
+		a[j+1]=y;
+	}
+}
+
+void main()
+{
+  int a[15000],n;
+    clock_t start,end;
+	n=500;
+	while(n<=14500)
+	{
+		for(int i=0;i<n;i++)
+			a[i]=n-i;
+		
+		start=clock();
+		insertion_sort(n,a);
+		
+	    //delay
+		for(int j=0;j<=100;j++);
+		 
+		end=clock();
+		
+		printf("time taken by %d elements = %f secs \n",n,((double)(end-start))/CLOCKS_PER_SEC);
+		n=n+1000;
+	}
+	
+}
